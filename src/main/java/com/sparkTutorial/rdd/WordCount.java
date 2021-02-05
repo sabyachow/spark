@@ -15,6 +15,7 @@ public class WordCount {
     public static void main(String[] args) throws Exception {
 
         Logger.getLogger("org").setLevel(Level.ERROR);
+
         SparkConf conf = new SparkConf().setAppName("wordCounts").setMaster("local[3]");
         JavaSparkContext sc = new JavaSparkContext(conf);
 
@@ -26,5 +27,9 @@ public class WordCount {
         for (Map.Entry<String, Long> entry : wordCounts.entrySet()) {
             System.out.println(entry.getKey() + " : " + entry.getValue());
         }
+
+
+
+
     }
 }

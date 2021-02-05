@@ -23,6 +23,8 @@ public class SumOfNumbersSolution {
 
         JavaRDD<Integer> intNumbers = validNumbers.map(number -> Integer.valueOf(number));
 
+        System.out.println("Count is: " + intNumbers.count());
+
         System.out.println("Sum is: " + intNumbers.reduce((x, y) -> x + y));
     }
 }
