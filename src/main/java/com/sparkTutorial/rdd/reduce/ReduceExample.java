@@ -21,6 +21,6 @@ public class ReduceExample {
 
         Integer product = integerRdd.reduce((x, y) -> x * y);
 
-        System.out.println("product is :" + product);
+        System.out.println("Avi got his product to :" + product);
     }
 }

@@ -1,5 +1,7 @@
 package com.sparkTutorial.sparkSql;
 
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.apache.spark.sql.SparkSession;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
@@ -7,15 +9,16 @@ import static org.apache.spark.sql.functions.col;
 
 
 public class MySparkSQLExample {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {        Logger.getLogger("org").setLevel(Level.ERROR);
+
         SparkSession session = SparkSession.builder()
                 .appName("HousePriceSolution")
                 .master("local[1]")
                 .getOrCreate();
 
         Dataset<Row> realEstate = session.read().option("header", "true").csv("in/RealEstate.csv");
-        //realEstate.show();
-        //realEstate.printSchema();
+        realEstate.show();
+        realEstate.printSchema();
         //realEstate.select(col("Location"), col("Price"), col("Bedrooms")).show();
         //realEstate.filter(col("Bedrooms").gt(5)).show();
         realEstate.createOrReplaceTempView("RealEstate");
